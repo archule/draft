@@ -1,13 +1,13 @@
 
 public class Player {
 
-	int rank;
-	String position;
-	String college;
-	int weight;
-	String height;
-	int age;
-	String name;
+	private int rank;
+	private String position;
+	private String college;
+	private int weight;
+	private String height;
+	private int age;
+	private String name;
 
 	public Player() {
 

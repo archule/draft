@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class Team {
 
-	String name;
-	ArrayList<Integer> picks;
+	private String name;
+	private ArrayList<Integer> picks;
 
 	public Team(String name, ArrayList<Integer> picks) {
 		this.name = name;

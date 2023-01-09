@@ -27,10 +27,10 @@ import javax.swing.JOptionPane;
  * @author Kai Archuleta
  *
  */
-public class console extends JFrame {
+public class Console extends JFrame {
 	
 	
-	public console() {
+	public Console() {
 		super("NFL Draft");
 	}
 
@@ -124,7 +124,7 @@ public class console extends JFrame {
 	ArrayList<Player> allPlayers = new ArrayList<>();
 
 	public static void main(String[] args) {
-		console frame = new console();
+		Console frame = new Console();
 		frame.initializePlayers();
 		teams = Team.assignPicks();
 		frame.eat();

@@ -1,4 +1,4 @@
-
+//import org.python.util.PythonInterpreter;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -124,12 +124,19 @@ public class Console extends JFrame {
 	ArrayList<Player> allPlayers = new ArrayList<>();
 
 	public static void main(String[] args) {
+
+		//PythonInterpreter pythonInterpreter = new PythonInterpreter();
+		//pythonInterpreter.execfile("parser.py");
+		String command = "py parser.py";
+		Process p = Runtime.getRuntime().exec(command);
+		/*
 		Console frame = new Console();
 		frame.initializePlayers();
 		teams = Team.assignPicks();
 		frame.eat();
 		frame.setVisible(true);
 		frame.start();
+		*/
 
 	}
 

@@ -127,16 +127,16 @@ public class Console extends JFrame {
 
 		//PythonInterpreter pythonInterpreter = new PythonInterpreter();
 		//pythonInterpreter.execfile("parser.py");
-		String command = "py parser.py";
-		Process p = Runtime.getRuntime().exec(command);
-		/*
+		//String command = "py parser.py";
+		//Process p = Runtime.getRuntime().exec(command);
+		
 		Console frame = new Console();
 		frame.initializePlayers();
 		teams = Team.assignPicks();
 		frame.eat();
 		frame.setVisible(true);
 		frame.start();
-		*/
+		
 
 	}
 

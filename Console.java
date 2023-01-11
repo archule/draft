@@ -1,4 +1,3 @@
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -32,6 +31,17 @@ public class Console extends JFrame {
 	
 	public Console() {
 		super("NFL Draft");
+
+		for(int i = 0; i < 7; i++) {
+		checkBoxes[i] = new CheckBox("Draft");
+		nameLabels[i] = new JLabel();
+		rankLabels[i] = new JLabel();
+		positionLabels[i] = new JLabel();
+		collegeLabels[i] = new JLabel();
+		heightLabels[i] = new JLabel();
+		weightLabels[i] = new JLabel();
+		ageLabels[i] = new JLabel();
+	}
 	}
 
 	private JPanel contentPane;
@@ -55,16 +65,6 @@ public class Console extends JFrame {
 	JLabel[] ageLabels = new JLabel[7];
 	JLabel[] heightLabels = new JLabel[7];
 	JLabel[] weightLabels = new JLabel[7];
-
-	for(i=0;i<7;i++) {
-		checkBoxes[i] = new CheckBox("Draft");
-		nameLabels[i] = new JLabel();
-		rankLabels[i] = new JLabel();
-		positionLabels[i] = new JLabel();
-		collegeLabels[i] = new JLabel();
-		heightLabels[i] = new JLabel();
-		weightLabels[i] = new JLabel();
-	}
 
 
 	int section1Width = 58;
@@ -265,285 +265,56 @@ public class Console extends JFrame {
 
 		sectionCumulation = 249;
 
-		JPanel player1PlaceHolder = new JPanel();
-		player1PlaceHolder.setLayout(new BorderLayout());
-		player1PlaceHolder.add(player1CheckBox, BorderLayout.WEST);
-		player1PlaceHolder.setBackground(Color.white);
-// x y width height\
-		player1PlaceHolder.setBounds(sectionCumulation, (menuSectionHeight), section1Width, (menuSectionHeight));
-		player1PlaceHolder.setBorder(new LineBorder(Color.black, 2));
-		contentPane.add(player1PlaceHolder);
+		JPanel[] playerPlaceHolders = new JPanel[7];
+		JPanel[] playerNames = new JPanel[7];
+		JPanel[] playerRanks = new JPanel[7];
+		JPanel[] playerPositions = new JPanel[7];
+		JPanel[] playerColleges = new JPanel[7];
+		JPanel[] playerAges = new JPanel[7];
+		JPanel[] playerHeights = new JPanel[7];
+		JPanel[] playerWeights = new JPanel[7];
 
-		JPanel player1Name = new JPanel();
-		makeMenuPanel(player1Name, section1Width, section2Width, 1);
-		addNameLabel(player1NameLabel, player1Name, 1);
+		for(int i=0;i<7;i++) {
+			sectionCumulation = 249;
+			playerPlaceHolders[i] = new JPanel();
+			playerPlaceHolders[i].setLayout(new BorderLayout());
+			playerPlaceHolders[i].add(checkBoxes[i], BorderLayout.WEST);
+			playerPlaceHolders[i].setBackground(Color.white);
+			// x y width height\
+			playerPlaceHolders[i].setBounds(sectionCumulation, (i+1) * (menuSectionHeight), section1Width, (menuSectionHeight));
+			playerPlaceHolders[i].setBorder(new LineBorder(Color.black, 2));
+			contentPane.add(playerPlaceHolders[i]);
 
-/*
-			CheckBox[] checkBoxes = new CheckBox[7];
-	JLabel[] nameLabels = new JLabel[7];
-	JLabel[] rankLabels = new JLabel[7];
-	JLabel[] positionLabels = new JLabel[7];
-	JLabel[] collegeLabels = new JLabel[7];
-	JLabel[] ageLabels = new JLabel[7];
-	JLabel[] heightLabels = new JLabel[7];
-	JLabel[] weightLabels = new JLabel[7];
-	*/
+			playerNames[i] = new JPanel();
+			makeMenuPanel(playerNames[i], section1Width, section2Width, i+1);
+			addNameLabel(nameLabels[i], playerNames[i], i+1);
 
-		JPanel player1Rank = new JPanel();
-		makeMenuPanel(player1Rank, section2Width, section3Width, 1);
-		addRankLabel(player1RankLabel, player1Rank, 1);
+			playerRanks[i] = new JPanel();
+			makeMenuPanel(playerRanks[i], section2Width, section3Width, i+1);
+			addRankLabel(rankLabels[i], playerRanks[i], i+1);
 
-		JPanel player1Position = new JPanel();
-		makeMenuPanel(player1Position, section3Width, section4Width, 1);
-		addPositionLabel(player1PositionLabel, player1Position, 1);
+			playerPositions[i] = new JPanel();
+			makeMenuPanel(playerPositions[i], section3Width, section4Width, i+1);
+			addPositionLabel(positionLabels[i], playerPositions[i], i+1);
 
-		JPanel player1College = new JPanel();
-		makeMenuPanel(player1College, section4Width, section5Width, 1);
-		addCollegeLabel(player1CollegeLabel, player1College, 1);
+			playerColleges[i] = new JPanel();
+			makeMenuPanel(playerColleges[i], section4Width, section5Width, i+1);
+			addCollegeLabel(collegeLabels[i], playerColleges[i], i+1);
 
-		JPanel player1Age = new JPanel();
-		this.makeMenuPanel(player1Age, section5Width, section6Width, 1);
-		addAgeLabel(player1AgeLabel, player1Age, 1);
+			playerAges[i] = new JPanel();
+			makeMenuPanel(playerAges[i], section5Width, section6Width, i+1);
+			addAgeLabel(ageLabels[i], playerAges[i], i+1);
 
-		JPanel player1Height = new JPanel();
-		this.makeMenuPanel(player1Height, section6Width, section7Width, 1);
-		addHeightLabel(player1HeightLabel, player1Height, 1);
+			playerHeights[i] = new JPanel();
+			makeMenuPanel(playerHeights[i], section6Width, section7Width, i+1);
+			addHeightLabel(heightLabels[i], playerHeights[i], i+1);
 
-		JPanel player1Weight = new JPanel();
-		this.makeMenuPanel(player1Weight, section7Width, section8Width, 1);
-		addWeightLabel(player1WeightLabel, player1Weight, 1);
+			playerWeights[i] = new JPanel();
+			makeMenuPanel(playerWeights[i], section6Width, section7Width, i+1);
+			addWeightLabel(weightLabels[i], playerWeights[i], i+1);
+		}
 
-		sectionCumulation = 249;
-
-		JPanel player2PlaceHolder = new JPanel();
-		player2PlaceHolder.setLayout(new BorderLayout());
-		player2PlaceHolder.add(player2CheckBox, BorderLayout.WEST);
-		player2PlaceHolder.setBackground(Color.white);
-// x y width height\
-		player2PlaceHolder.setBounds(sectionCumulation, 2 * (menuSectionHeight), section1Width, (menuSectionHeight));
-		player2PlaceHolder.setBorder(new LineBorder(Color.black, 2));
-		contentPane.add(player2PlaceHolder);
-
-		JPanel player2Name = new JPanel();
-		makeMenuPanel(player2Name, section1Width, section2Width, 2);
-		addNameLabel(player2NameLabel, player2Name, 2);
-
-		JPanel player2Rank = new JPanel();
-		makeMenuPanel(player2Rank, section2Width, section3Width, 2);
-		addRankLabel(player2RankLabel, player2Rank, 2);
-
-		JPanel player2Position = new JPanel();
-		makeMenuPanel(player2Position, section3Width, section4Width, 2);
-		addPositionLabel(player2PositionLabel, player2Position, 2);
-
-		JPanel player2College = new JPanel();
-		makeMenuPanel(player2College, section4Width, section5Width, 2);
-		addCollegeLabel(player2CollegeLabel, player2College, 2);
-
-		JPanel player2Age = new JPanel();
-		makeMenuPanel(player2Age, section5Width, section6Width, 2);
-		addAgeLabel(player2AgeLabel, player2Age, 2);
-
-		JPanel player2Height = new JPanel();
-		makeMenuPanel(player2Height, section6Width, section7Width, 2);
-		addHeightLabel(player2HeightLabel, player2Height, 2);
-
-		JPanel player2Weight = new JPanel();
-		makeMenuPanel(player2Weight, section7Width, section8Width, 2);
-		addWeightLabel(player2WeightLabel, player2Weight, 2);
-
-		sectionCumulation = 249;
-
-		JPanel player3PlaceHolder = new JPanel();
-		player3PlaceHolder.setLayout(new BorderLayout());
-		player3PlaceHolder.add(player3CheckBox, BorderLayout.WEST);
-		player3PlaceHolder.setBackground(Color.white);
-// x y width height\
-		player3PlaceHolder.setBounds(sectionCumulation, 3 * (menuSectionHeight), section1Width, (menuSectionHeight));
-		player3PlaceHolder.setBorder(new LineBorder(Color.black, 2));
-		contentPane.add(player3PlaceHolder);
-
-		JPanel player3Name = new JPanel();
-		makeMenuPanel(player3Name, section1Width, section2Width, 3);
-		addNameLabel(player3NameLabel, player3Name, 3);
-
-		JPanel player3Rank = new JPanel();
-		makeMenuPanel(player3Rank, section2Width, section3Width, 3);
-		addRankLabel(player3RankLabel, player3Rank, 3);
-
-		JPanel player3Position = new JPanel();
-		makeMenuPanel(player3Position, section3Width, section4Width, 3);
-		addPositionLabel(player3PositionLabel, player3Position, 3);
-
-		JPanel player3College = new JPanel();
-		makeMenuPanel(player3College, section4Width, section5Width, 3);
-		addCollegeLabel(player3CollegeLabel, player3College, 3);
-
-		JPanel player3Age = new JPanel();
-		makeMenuPanel(player3Age, section5Width, section6Width, 3);
-		addAgeLabel(player3AgeLabel, player3Age, 3);
-
-		JPanel player3Height = new JPanel();
-		makeMenuPanel(player3Height, section6Width, section7Width, 3);
-		addHeightLabel(player3HeightLabel, player3Height, 3);
-
-		JPanel player3Weight = new JPanel();
-		makeMenuPanel(player3Weight, section7Width, section8Width, 3);
-		addWeightLabel(player3WeightLabel, player3Weight, 3);
-
-		sectionCumulation = 249;
-
-		JPanel player4PlaceHolder = new JPanel();
-		player4PlaceHolder.setLayout(new BorderLayout());
-		player4PlaceHolder.add(player4CheckBox, BorderLayout.WEST);
-		player4PlaceHolder.setBackground(Color.white);
-// x y width height\
-		player4PlaceHolder.setBounds(sectionCumulation, 4 * (menuSectionHeight), section1Width, (menuSectionHeight));
-		player4PlaceHolder.setBorder(new LineBorder(Color.black, 2));
-		contentPane.add(player4PlaceHolder);
-
-		JPanel player4Name = new JPanel();
-		makeMenuPanel(player4Name, section1Width, section2Width, 4);
-		addNameLabel(player4NameLabel, player4Name, 4);
-
-		JPanel player4Rank = new JPanel();
-		makeMenuPanel(player4Rank, section2Width, section3Width, 4);
-		addRankLabel(player4RankLabel, player4Rank, 4);
-
-		JPanel player4Position = new JPanel();
-		makeMenuPanel(player4Position, section3Width, section4Width, 4);
-		addPositionLabel(player4PositionLabel, player4Position, 4);
-
-		JPanel player4College = new JPanel();
-		makeMenuPanel(player4College, section4Width, section5Width, 4);
-		addCollegeLabel(player4CollegeLabel, player4College, 4);
-
-		JPanel player4Age = new JPanel();
-		makeMenuPanel(player4Age, section5Width, section6Width, 4);
-		addAgeLabel(player4AgeLabel, player4Age, 4);
-
-		JPanel player4Height = new JPanel();
-		makeMenuPanel(player4Height, section6Width, section7Width, 4);
-		addHeightLabel(player4HeightLabel, player4Height, 4);
-
-		JPanel player4Weight = new JPanel();
-		makeMenuPanel(player4Weight, section7Width, section8Width, 4);
-		addWeightLabel(player4WeightLabel, player4Weight, 4);
-
-		sectionCumulation = 249;
-
-		JPanel player5PlaceHolder = new JPanel();
-		player5PlaceHolder.setLayout(new BorderLayout());
-		player5PlaceHolder.add(player5CheckBox, BorderLayout.WEST);
-		player5PlaceHolder.setBackground(Color.white);
-// x y width height\
-		player5PlaceHolder.setBounds(sectionCumulation, 5 * (menuSectionHeight), section1Width, (menuSectionHeight));
-		player5PlaceHolder.setBorder(new LineBorder(Color.black, 2));
-		contentPane.add(player5PlaceHolder);
-
-		JPanel player5Name = new JPanel();
-		makeMenuPanel(player5Name, section1Width, section2Width, 5);
-		addNameLabel(player5NameLabel, player5Name, 5);
-
-		JPanel player5Rank = new JPanel();
-		makeMenuPanel(player5Rank, section2Width, section3Width, 5);
-		addRankLabel(player5RankLabel, player5Rank, 5);
-
-		JPanel player5Position = new JPanel();
-		makeMenuPanel(player5Position, section3Width, section4Width, 5);
-		addPositionLabel(player5PositionLabel, player5Position, 5);
-
-		JPanel player5College = new JPanel();
-		makeMenuPanel(player5College, section4Width, section5Width, 5);
-		addCollegeLabel(player5CollegeLabel, player5College, 5);
-
-		JPanel player5Age = new JPanel();
-		this.makeMenuPanel(player5Age, section5Width, section6Width, 5);
-		addAgeLabel(player5AgeLabel, player5Age, 5);
-
-		JPanel player5Height = new JPanel();
-		this.makeMenuPanel(player5Height, section6Width, section7Width, 5);
-		addHeightLabel(player5HeightLabel, player5Height, 5);
-
-		JPanel player5Weight = new JPanel();
-		this.makeMenuPanel(player5Weight, section7Width, section8Width, 5);
-		addWeightLabel(player5WeightLabel, player5Weight, 5);
-
-		sectionCumulation = 249;
-		JPanel player6PlaceHolder = new JPanel();
-		player6PlaceHolder.setLayout(new BorderLayout());
-		player6PlaceHolder.add(player6CheckBox, BorderLayout.WEST);
-		player6PlaceHolder.setBackground(Color.white);
-// x y width height\
-		player6PlaceHolder.setBounds(sectionCumulation, 6 * (menuSectionHeight), section1Width, (menuSectionHeight));
-		player6PlaceHolder.setBorder(new LineBorder(Color.black, 2));
-		contentPane.add(player6PlaceHolder);
-
-		JPanel player6Name = new JPanel();
-		makeMenuPanel(player6Name, section1Width, section2Width, 6);
-		addNameLabel(player6NameLabel, player6Name, 6);
-
-		JPanel player6Rank = new JPanel();
-		makeMenuPanel(player6Rank, section2Width, section3Width, 6);
-		addRankLabel(player6RankLabel, player6Rank, 6);
-
-		JPanel player6Position = new JPanel();
-		makeMenuPanel(player6Position, section3Width, section4Width, 6);
-		addPositionLabel(player6PositionLabel, player6Position, 6);
-
-		JPanel player6College = new JPanel();
-		makeMenuPanel(player6College, section4Width, section5Width, 6);
-		addCollegeLabel(player6CollegeLabel, player6College, 6);
-
-		JPanel player6Age = new JPanel();
-		makeMenuPanel(player6Age, section5Width, section6Width, 6);
-		addAgeLabel(player6AgeLabel, player6Age, 6);
-
-		JPanel player6Height = new JPanel();
-		makeMenuPanel(player6Height, section6Width, section7Width, 6);
-		addHeightLabel(player6HeightLabel, player6Height, 6);
-
-		JPanel player6Weight = new JPanel();
-		makeMenuPanel(player6Weight, section7Width, section8Width, 6);
-		addWeightLabel(player6WeightLabel, player6Weight, 6);
-
-		sectionCumulation = 249;
-		JPanel player7PlaceHolder = new JPanel();
-		player7PlaceHolder.setLayout(new BorderLayout());
-		player7PlaceHolder.add(player7CheckBox, BorderLayout.WEST);
-		player7PlaceHolder.setBackground(Color.white);
-// x y width height\
-		player7PlaceHolder.setBounds(sectionCumulation, 7 * (menuSectionHeight), section1Width, (menuSectionHeight));
-		player7PlaceHolder.setBorder(new LineBorder(Color.black, 2));
-		contentPane.add(player7PlaceHolder);
-
-		JPanel player7Name = new JPanel();
-		makeMenuPanel(player7Name, section1Width, section2Width, 7);
-		addNameLabel(player7NameLabel, player7Name, 7);
-
-		JPanel player7Rank = new JPanel();
-		makeMenuPanel(player7Rank, section2Width, section3Width, 7);
-		addRankLabel(player7RankLabel, player7Rank, 7);
-
-		JPanel player7Position = new JPanel();
-		makeMenuPanel(player7Position, section3Width, section4Width, 7);
-		addPositionLabel(player7PositionLabel, player7Position, 7);
-
-		JPanel player7College = new JPanel();
-		makeMenuPanel(player7College, section4Width, section5Width, 7);
-		addCollegeLabel(player7CollegeLabel, player7College, 7);
-
-		JPanel player7Age = new JPanel();
-		makeMenuPanel(player7Age, section5Width, section6Width, 7);
-		addAgeLabel(player7AgeLabel, player7Age, 7);
-
-		JPanel player7Height = new JPanel();
-		makeMenuPanel(player7Height, section6Width, section7Width, 7);
-		addHeightLabel(player7HeightLabel, player7Height, 7);
-
-		JPanel player7Weight = new JPanel();
-		makeMenuPanel(player7Weight, section7Width, section8Width, 7);
-		addWeightLabel(player7WeightLabel, player7Weight, 7);
+		
 
 	}
 
@@ -696,19 +467,19 @@ public class Console extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 
 			Player p = new Player();
-			if (equals(player1CheckBox)) {
+			if (equals(checkBoxes[0])) {
 				p = sevenPlayers[0];
-			} else if (equals(player2CheckBox)) {
+			} else if (equals(checkBoxes[1])) {
 				p = sevenPlayers[1];
-			} else if (equals(player3CheckBox)) {
+			} else if (equals(checkBoxes[2])) {
 				p = sevenPlayers[2];
-			} else if (equals(player4CheckBox)) {
+			} else if (equals(checkBoxes[3])) {
 				p = sevenPlayers[3];
-			} else if (equals(player5CheckBox)) {
+			} else if (equals(checkBoxes[4])) {
 				p = sevenPlayers[4];
-			} else if (equals(player6CheckBox)) {
+			} else if (equals(checkBoxes[5])) {
 				p = sevenPlayers[5];
-			} else if (equals(player7CheckBox)) {
+			} else if (equals(checkBoxes[6])) {
 				p = sevenPlayers[6];
 			}
 			int input = JOptionPane.showInternalConfirmDialog(null,
@@ -784,68 +555,20 @@ public class Console extends JFrame {
 
 	public void updateLabels() {
 		
+
+
+
 		// update names
-		player1NameLabel.setText(" " + sevenPlayers[0].getName());
-		player2NameLabel.setText(" " + sevenPlayers[1].getName());
-		player3NameLabel.setText(" " + sevenPlayers[2].getName());
-		player4NameLabel.setText(" " + sevenPlayers[3].getName());
-		player5NameLabel.setText(" " + sevenPlayers[4].getName());
-		player6NameLabel.setText(" " + sevenPlayers[5].getName());
-		player7NameLabel.setText(" " + sevenPlayers[6].getName());
+		for(int i = 0; i < 7; i++) {
+			nameLabels[i].setText(" " + sevenPlayers[i].getName());
+			rankLabels[i].setText(" " + sevenPlayers[0].getRank());
+			positionLabels[i].setText(" " + sevenPlayers[0].getPosition());
+			collegeLabels[i].setText(" " + sevenPlayers[0].getCollege());
+			ageLabels[i].setText(" " + sevenPlayers[0].getAge());
+			heightLabels[i].setText(" " + sevenPlayers[0].getHeight());
+			weightLabels[i].setText(" " + sevenPlayers[0].getWeight() + " Pounds");
+		}
 
-		// update ranks
-		player1RankLabel.setText(" " + sevenPlayers[0].getRank());
-		player2RankLabel.setText(" " + sevenPlayers[1].getRank());
-		player3RankLabel.setText(" " + sevenPlayers[2].getRank());
-		player4RankLabel.setText(" " + sevenPlayers[3].getRank());
-		player5RankLabel.setText(" " + sevenPlayers[4].getRank());
-		player6RankLabel.setText(" " + sevenPlayers[5].getRank());
-		player7RankLabel.setText(" " + sevenPlayers[6].getRank());
-
-		// update positions
-		player1PositionLabel.setText(" " + sevenPlayers[0].getPosition());
-		player2PositionLabel.setText(" " + sevenPlayers[1].getPosition());
-		player3PositionLabel.setText(" " + sevenPlayers[2].getPosition());
-		player4PositionLabel.setText(" " + sevenPlayers[3].getPosition());
-		player5PositionLabel.setText(" " + sevenPlayers[4].getPosition());
-		player6PositionLabel.setText(" " + sevenPlayers[5].getPosition());
-		player7PositionLabel.setText(" " + sevenPlayers[6].getPosition());
-
-		// update colleges
-		player1CollegeLabel.setText(" " + sevenPlayers[0].getCollege());
-		player2CollegeLabel.setText(" " + sevenPlayers[1].getCollege());
-		player3CollegeLabel.setText(" " + sevenPlayers[2].getCollege());
-		player4CollegeLabel.setText(" " + sevenPlayers[3].getCollege());
-		player5CollegeLabel.setText(" " + sevenPlayers[4].getCollege());
-		player6CollegeLabel.setText(" " + sevenPlayers[5].getCollege());
-		player7CollegeLabel.setText(" " + sevenPlayers[6].getCollege());
-
-		// update ages
-		player1AgeLabel.setText(" " + sevenPlayers[0].getAge());
-		player2AgeLabel.setText(" " + sevenPlayers[1].getAge());
-		player3AgeLabel.setText(" " + sevenPlayers[2].getAge());
-		player4AgeLabel.setText(" " + sevenPlayers[3].getAge());
-		player5AgeLabel.setText(" " + sevenPlayers[4].getAge());
-		player6AgeLabel.setText(" " + sevenPlayers[5].getAge());
-		player7AgeLabel.setText(" " + sevenPlayers[6].getAge());
-
-		// update heights 
-		player1HeightLabel.setText(" " + sevenPlayers[0].getHeight());
-		player2HeightLabel.setText(" " + sevenPlayers[1].getHeight());
-		player3HeightLabel.setText(" " + sevenPlayers[2].getHeight());
-		player4HeightLabel.setText(" " + sevenPlayers[3].getHeight());
-		player5HeightLabel.setText(" " + sevenPlayers[4].getHeight());
-		player6HeightLabel.setText(" " + sevenPlayers[5].getHeight());
-		player7HeightLabel.setText(" " + sevenPlayers[6].getHeight());
-
-		// update weights 
-		player1WeightLabel.setText(" " + sevenPlayers[0].getWeight() + " Pounds");
-		player2WeightLabel.setText(" " + sevenPlayers[1].getWeight() + " Pounds");
-		player3WeightLabel.setText(" " + sevenPlayers[2].getWeight() + " Pounds");
-		player4WeightLabel.setText(" " + sevenPlayers[3].getWeight() + " Pounds");
-		player5WeightLabel.setText(" " + sevenPlayers[4].getWeight() + " Pounds");
-		player6WeightLabel.setText(" " + sevenPlayers[5].getWeight() + " Pounds");
-		player7WeightLabel.setText(" " + sevenPlayers[6].getWeight() + " Pounds");
 	}
 
 	/**

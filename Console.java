@@ -47,13 +47,25 @@ public class Console extends JFrame {
 	JLabel teamLabel = new JLabel();
 	Timer timer = new Timer();
 
-	CheckBox player1CheckBox = new CheckBox("Draft");
-	CheckBox player2CheckBox = new CheckBox("Draft");
-	CheckBox player3CheckBox = new CheckBox("Draft");
-	CheckBox player4CheckBox = new CheckBox("Draft");
-	CheckBox player5CheckBox = new CheckBox("Draft");
-	CheckBox player6CheckBox = new CheckBox("Draft");
-	CheckBox player7CheckBox = new CheckBox("Draft");
+	CheckBox[] checkBoxes = new CheckBox[7];
+	JLabel[] nameLabels = new JLabel[7];
+	JLabel[] rankLabels = new JLabel[7];
+	JLabel[] positionLabels = new JLabel[7];
+	JLabel[] collegeLabels = new JLabel[7];
+	JLabel[] ageLabels = new JLabel[7];
+	JLabel[] heightLabels = new JLabel[7];
+	JLabel[] weightLabels = new JLabel[7];
+
+	for(i=0;i<7;i++) {
+		checkBoxes[i] = new CheckBox("Draft");
+		nameLabels[i] = new JLabel();
+		rankLabels[i] = new JLabel();
+		positionLabels[i] = new JLabel();
+		collegeLabels[i] = new JLabel();
+		heightLabels[i] = new JLabel();
+		weightLabels[i] = new JLabel();
+	}
+
 
 	int section1Width = 58;
 	int section2Width = 200;
@@ -64,66 +76,13 @@ public class Console extends JFrame {
 	int section7Width = 128;
 	int section8Width = 130;
 
-	JLabel player1NameLabel = new JLabel();
-	JLabel player2NameLabel = new JLabel();
-	JLabel player3NameLabel = new JLabel();
-	JLabel player4NameLabel = new JLabel();
-	JLabel player5NameLabel = new JLabel();
-	JLabel player6NameLabel = new JLabel();
-	JLabel player7NameLabel = new JLabel();
 
-	JLabel player1RankLabel = new JLabel();
-	JLabel player2RankLabel = new JLabel();
-	JLabel player3RankLabel = new JLabel();
-	JLabel player4RankLabel = new JLabel();
-	JLabel player5RankLabel = new JLabel();
-	JLabel player6RankLabel = new JLabel();
-	JLabel player7RankLabel = new JLabel();
-
-	JLabel player1PositionLabel = new JLabel();
-	JLabel player2PositionLabel = new JLabel();
-	JLabel player3PositionLabel = new JLabel();
-	JLabel player4PositionLabel = new JLabel();
-	JLabel player5PositionLabel = new JLabel();
-	JLabel player6PositionLabel = new JLabel();
-	JLabel player7PositionLabel = new JLabel();
-
-	JLabel player1CollegeLabel = new JLabel();
-	JLabel player2CollegeLabel = new JLabel();
-	JLabel player3CollegeLabel = new JLabel();
-	JLabel player4CollegeLabel = new JLabel();
-	JLabel player5CollegeLabel = new JLabel();
-	JLabel player6CollegeLabel = new JLabel();
-	JLabel player7CollegeLabel = new JLabel();
-
-	JLabel player1AgeLabel = new JLabel();
-	JLabel player2AgeLabel = new JLabel();
-	JLabel player3AgeLabel = new JLabel();
-	JLabel player4AgeLabel = new JLabel();
-	JLabel player5AgeLabel = new JLabel();
-	JLabel player6AgeLabel = new JLabel();
-	JLabel player7AgeLabel = new JLabel();
-
-	JLabel player1HeightLabel = new JLabel();
-	JLabel player2HeightLabel = new JLabel();
-	JLabel player3HeightLabel = new JLabel();
-	JLabel player4HeightLabel = new JLabel();
-	JLabel player5HeightLabel = new JLabel();
-	JLabel player6HeightLabel = new JLabel();
-	JLabel player7HeightLabel = new JLabel();
-
-	JLabel player1WeightLabel = new JLabel();
-	JLabel player2WeightLabel = new JLabel();
-	JLabel player3WeightLabel = new JLabel();
-	JLabel player4WeightLabel = new JLabel();
-	JLabel player5WeightLabel = new JLabel();
-	JLabel player6WeightLabel = new JLabel();
-	JLabel player7WeightLabel = new JLabel();
 
 	Player[] sevenPlayers;
 	ArrayList<Player> allPlayers = new ArrayList<>();
 
 	public static void main(String[] args) {
+
 		Console frame = new Console();
 		frame.initializePlayers();
 		teams = Team.assignPicks();
@@ -318,6 +277,17 @@ public class Console extends JFrame {
 		JPanel player1Name = new JPanel();
 		makeMenuPanel(player1Name, section1Width, section2Width, 1);
 		addNameLabel(player1NameLabel, player1Name, 1);
+
+/*
+			CheckBox[] checkBoxes = new CheckBox[7];
+	JLabel[] nameLabels = new JLabel[7];
+	JLabel[] rankLabels = new JLabel[7];
+	JLabel[] positionLabels = new JLabel[7];
+	JLabel[] collegeLabels = new JLabel[7];
+	JLabel[] ageLabels = new JLabel[7];
+	JLabel[] heightLabels = new JLabel[7];
+	JLabel[] weightLabels = new JLabel[7];
+	*/
 
 		JPanel player1Rank = new JPanel();
 		makeMenuPanel(player1Rank, section2Width, section3Width, 1);

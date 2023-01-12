@@ -1,17 +1,59 @@
-
 import java.util.ArrayList;
 
 public class Team {
 
+	// Team name 
 	private String name;
+
+	// number of teams in the draft
+	public static final NUM_TEAMS = 32;
+	public static final NUM_DRAFT_ROUNDS = 7;
+
+	// List of draft picks for the team
 	private ArrayList<Integer> picks;
 
+
+	// Initialize team
 	public Team(String name, ArrayList<Integer> picks) {
 		this.name = name;
 		this.picks = picks;
 	}
 
 	static Team[] assignPicks() {
+
+		Random random = new Random();
+
+		/* assign 32 teams */
+		Team[] teams = new Team[NUM_TEAMS];
+
+		/* possible draft selections */
+		ArrayList<Int> selections = new ArrayList<Int>();
+
+		/* Get possible selections */
+		for(int i = 0; i < NUM_TEAMS; i++) {
+			selections.add(i+1);
+		}
+
+		/*  Randomly pick draft pick for each team */
+		for(int i = 0; i < NUM_TEAMS; i++) {
+
+			/* get random selection left for the team*/
+			int rand = random.nextInt(selections.length);
+			
+			
+			int draftRound = 1;
+			int numRounds = 7;
+
+			for(int draftRound = 1; draftRound <= NUM_DRAFT_ROUNDS; draftRound++) {
+				teams[i].picks.add(draftRound * selections[rand]);
+			}
+
+			/* remove taken selection at location i*/
+			selections.remove(i);
+
+		}
+
+
 		Team[] teams = new Team[32];
 		ArrayList<Integer> localPicks = new ArrayList<Integer>();
 

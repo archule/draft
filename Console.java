@@ -24,7 +24,6 @@ import javax.swing.JOptionPane;
  *
  *
  * @author Kai Archuleta
- * @version 1
  *
  */
 public class Console extends JFrame {
@@ -89,7 +88,6 @@ public class Console extends JFrame {
 		teams = Team.assignPicks();
 		frame.eat();
 		frame.setVisible(true);
-		Sounds.playMusic("lifelike.wav");
 		frame.start();
 
 	}
@@ -563,12 +561,12 @@ public class Console extends JFrame {
 		// update names
 		for(int i = 0; i < 7; i++) {
 			nameLabels[i].setText(" " + sevenPlayers[i].getName());
-			rankLabels[i].setText(" " + sevenPlayers[i].getRank());
-			positionLabels[i].setText(" " + sevenPlayers[i].getPosition());
-			collegeLabels[i].setText(" " + sevenPlayers[i].getCollege());
-			ageLabels[i].setText(" " + sevenPlayers[i].getAge());
-			heightLabels[i].setText(" " + sevenPlayers[i].getHeight());
-			weightLabels[i].setText(" " + sevenPlayers[i].getWeight() + " Pounds");
+			rankLabels[i].setText(" " + sevenPlayers[0].getRank());
+			positionLabels[i].setText(" " + sevenPlayers[0].getPosition());
+			collegeLabels[i].setText(" " + sevenPlayers[0].getCollege());
+			ageLabels[i].setText(" " + sevenPlayers[0].getAge());
+			heightLabels[i].setText(" " + sevenPlayers[0].getHeight());
+			weightLabels[i].setText(" " + sevenPlayers[0].getWeight() + " Pounds");
 		}
 
 	}

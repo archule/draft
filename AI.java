@@ -1,12 +1,13 @@
+import java.util.Random;
+
 public class AI{
 
 
-	private maxValue(s) {
-		
-	}
-	public miniMax() {
 
-	}
+
+
 
 }
+
+
 

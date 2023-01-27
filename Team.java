@@ -4,6 +4,7 @@ public class Team {
 
 	// Team name 
 	private String name;
+	private String id;
 
 	// number of teams in the draft
 	public static final NUM_TEAMS = 32;

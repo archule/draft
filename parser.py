@@ -131,7 +131,7 @@ def checkPlayerCombineProfile(player, year):
 			vertical = combine_results[2].find("div", {"class" : "css-w1k723"}).text
 			broad = combine_results[3].find("div", {"class" : "css-w1k723"}).text
 
-			player['vertical_jump'] = vertical
+			player['vertical_jump'] = int(vertical)
 			player['broad_jump'] = broad
 			three_cone = combine_results[4].find("div", {"class" : "css-w1k723"}).text
 			player['three_cone'] = three_cone
@@ -158,27 +158,49 @@ def checkPlayerCombineProfile(player, year):
 # Get additional Player information for player combin3profile 
 def checkCombineData(players, year):	
 
+	print("check players")
 	for player in players:
+		print("Set URL")
 		url = 'https://www.pro-football-reference.com/draft/' + str(year) + '-combine.htm'
 
+		print("Get URL")
 		browser.get(url)
 
+		print("begin wait")
 		WebDriverWait(browser, 30).until(EC.visibility_of_all_elements_located((By.CLASS_NAME, "table_wrapper")))
-
+		print("end wait")
 		soup = BeautifulSoup(browser.page_source, "html.parser")
 
 		player_tag = player['last_name'] + ',' + player['first_name']
 
+		print("check for --> " + str(player_tag))
 		info = soup.find("th", {"csk" : player_tag})
 		
+		print("found info: " + str(info))
 		row = info.parent
 
-		player['twenty_yard_shuttle'] = row.find("td", {"data-stat" : "shuttle"}).text
-		player['forty'] = row.find("td", {"data-stat" : "forty_yd"}).text
-		player['vertical_jump'] = row.find("td", {"data-stat" : "vertical"}).text
-		player['bench'] = row.find("td", {"data-stat" : "bench_reps"}).text
-		player['broad_jump'] = row.find("td", {"data-stat" : "broad_jump"}).text
-		player['three_cone'] = row.find("td", {"data-stat" : "cone"}).text
+		print("add data")
+
+		if row.find("td", {"data-stat" : "shuttle"}).text != "":
+			player['twenty_yard_shuttle'] = row.find("td", {"data-stat" : "shuttle"}).text
+
+		if row.find("td", {"data-stat" : "forty_yd"}).text != "":
+			player['forty'] = row.find("td", {"data-stat" : "forty_yd"}).text
+
+		if row.find("td", {"data-stat" : "vertical"}).text != "":
+			player['vertical_jump'] = row.find("td", {"data-stat" : "vertical"}).text
+
+		if row.find("td", {"data-stat" : "bench_reps"}).text != "":
+			player['bench'] = row.find("td", {"data-stat" : "bench_reps"}).text
+
+		if row.find("td", {"data-stat" : "broad_jump"}).text != "":
+			player['broad_jump'] = row.find("td", {"data-stat" : "broad_jump"}).text
+
+		if row.find("td", {"data-stat" : "cone"}).text != "":
+			player['three_cone'] = row.find("td", {"data-stat" : "cone"}).text
+	
+
+		print("end add data")
 
 
 
@@ -186,7 +208,15 @@ def checkCombineData(players, year):
 curr_page = 1
 
 # get player year inputted on command line
-year = int(sys.argv[1])
+year = 0
+
+try:
+	year = int(sys.argv[1])
+except ValueError:
+	"Please enter a number between "
+
+
+ValueError
 
 # data isn't going to be available
 if year < 2014:
@@ -269,7 +299,8 @@ while len(y[i].text) > 0 and i < 2:#len(y):
 		"three_cone": 0.00,
 		"twenty_yard_shuttle": 0.00,
 		"sixty_yard_shuttle": 0.00,
-		"scout_report" : "N/A"
+		"scout_report" : "N/A",
+		"year" : str(year)
 	}
 
 	# set gathered values 	
@@ -374,7 +405,8 @@ while curr_page < 1: #page_num:
 		"three_cone": 0.00,
 		"twenty_yard_shuttle": 0.00,
 		"sixty_yard_shuttle": 0.00,
-		"scout_report" : "N/A"
+		"scout_report" : "N/A",
+		"year" : str(year)
 		}
 
 		# set gathered values 	
@@ -400,8 +432,11 @@ while curr_page < 1: #page_num:
 
 print("Appendin players")
 for player in players:
+	player.pop('player_info')
+
+for player in players:
 	checkPlayerProfile(player)
-	checkPlayerCombineProfile(player, year)
+	#checkPlayerCombineProfile(player, year)
 
 checkCombineData(players, year)
 
